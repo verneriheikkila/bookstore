@@ -18,7 +18,7 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository repository) {
 		return(args)->{
-			Book test1 = new Book("12231320", "Idiootti", "Fjodr Dostojevski", "1869");
+			Book test1 = new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869");
 			Book test2 = new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994");
 			
 			repository.save(test1);
