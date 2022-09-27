@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import fi.SWD4TN020.bookstore.domain.Book;
 import fi.SWD4TN020.bookstore.domain.BookRepository;
+import fi.SWD4TN020.bookstore.domain.Category;
+import fi.SWD4TN020.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -16,13 +18,22 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository repository) {
+	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository) {
 		return(args)->{
-			Book test1 = new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869");
-			Book test2 = new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994");
+			Category category1 = new Category("Bildungs");
+			crepository.save(category1);
 			
-			repository.save(test1);
-			repository.save(test2);
+			Category category2 = new Category("Satiiri");
+			crepository.save(category2);
+			
+			Category category3 = new Category("Erootiikka");
+			crepository.save(category3);
+			
+			Book test1 = new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869");
+			brepository.save(test1);
+			
+			Book test2 = new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994");
+			brepository.save(test2);
 		};
 	}
 }
