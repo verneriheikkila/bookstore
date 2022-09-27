@@ -29,11 +29,13 @@ public class BookstoreApplication {
 			Category category3 = new Category("Erootiikka");
 			crepository.save(category3);
 			
-			Book test1 = new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869");
+			Book test1 = new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869", category2);
 			brepository.save(test1);
 			
-			Book test2 = new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994");
+			Book test2 = new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994", category1);
 			brepository.save(test2);
+//			brepository.save(new Book("12231320", "Idiootti", "Fjodor Dostojevski", "1869", category2));
+//			brepository.save(new Book("12231321", "Vieterilintu kronikka", "Haruki Murakami", "1994", category1));
 		};
 	}
 }

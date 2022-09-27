@@ -1,39 +1,53 @@
 package fi.SWD4TN020.bookstore.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	private String Name;
+	private long categoryid;
+	private String name;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	private List<Book> books;
 	
 	public Category() {}
 	
 	public Category(String name) {
 		super();
-		Name = name;
+		this.name = name;
 	}
 
-	public long getId() {
-		return id;
+	public long getCategoryid() {
+		return categoryid;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCategoryid(long categoryid) {
+		this.categoryid = categoryid;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+	@Override
+	public String toString() {
+		// Do not insert list attribute students here! Otherwise execution of this method causes an infinite loop. 
+		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+	}
+
 
 	
 }
